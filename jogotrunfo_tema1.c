@@ -1,94 +1,111 @@
-# Desafio Super Trunfo - Países - Cadastro das Cartas - Atualizado: 21/02
+#include <stdio.h>
 
-Bem-vindo ao desafio "Super Trunfo - Países"! No jogo Super Trunfo, os jogadores comparam os atributos das cartas para determinar a mais forte. O tema deste Super Trunfo é "Países", onde você comparará os atributos das cidades.
+int main(){
 
-A empresa MateCheck contratou você para desenvolver a parte inicial do jogo, que consiste no cadastro das cartas.
+    //Definição das variáveis das Cartas 01 e 02:
+    char estado01, estado02;
+    char codigo01[20], codigo02[20];
+    char nome_cidade01[50], nome_cidade02[50];
+    unsigned long int populacao01, populacao02;
+    float area01, area02;
+    float pib01, pib02;
+    int pontos_turisticos01, pontos_turisticos02;
+    float densidadepopulacional01, densidadepopulacional02;
+    float PIB_per_capita01, PIB_per_capita02;
+    float superPoder01, superPoder02;
+    float inverso_densidade01, inverso_densidade2;
+    char carta01, carta02;
 
-O desafio está dividido em três níveis: Novato, Aventureiro e Mestre, com cada nível adicionando mais complexidade ao anterior.  **Você deve escolher qual desafio quer realizar.**
+    // Entrada dos dados da Carta 01:
 
-🚨 **Atenção:** O nível Novato do desafio é focado apenas no cadastro das cartas, utilizando as funções `scanf` para ler os dados e `printf` para exibi-los.
+    printf("*** QUALIFICAÇÃO DA CARTA 01 ***\n");
+    printf("Digite a letra que representa o Estado da Carta 01 (A - H): ");
+    scanf(" %c", &estado01);
+    printf("Digite o código do Estado da Carta 01: ");
+    scanf("%s", &codigo01);
+    printf("Digite o nome da Cidade da Carta 01: ");
+    scanf("%s", &nome_cidade01);
+    printf("Digite a população da Carta 01: ");
+    scanf("%ul", &populacao01);
+    printf("Digite a área da Carta 01 (km²): ");
+    scanf("%f", &area01);
+    printf("Digite o PIB da Carta 01: ");
+    scanf("%f", &pib01);
+    printf("Digite o número dos pontos turísticos da Carta 01: ");
+    scanf("%d", &pontos_turisticos01);
 
-## 🎮 Nível Novato: Cadastro Básico
+    // Entrada dos dados da Carta 02:
 
-No nível Novato, você iniciará criando o sistema básico do jogo Super Trunfo com o tema "Países". As cartas serão divididas por estados, cada um com quatro cidades.  Imagine um país dividido em oito estados (A a H), e cada estado com quatro cidades (1 a 4).  A combinação forma o código da carta (ex: A01, B02).
+    printf("*** QUALIFICAÇÃO DA CARTA 02 ***\n");
+    printf("Digite a letra que representa o Estado da Carta 02 (A - H): ");
+    scanf(" %c", &estado02);
+    printf("Digite o código do Estado da Carta 02: ");
+    scanf("%s", &codigo02);
+    printf("Digite o nome da Cidade da Carta 02: ");
+    scanf("%s", &nome_cidade02);
+    printf("Digite a população da Carta 02: ");
+    scanf("%ul", &populacao02);
+    printf("Digite a área da Carta 02 (km²): ");
+    scanf("%f", &area02);
+    printf("Digite o PIB da Carta 02: ");
+    scanf("%f", &pib02);
+    printf("Digite o número dos pontos turísticos da Carta 02: ");
+    scanf("%d", &pontos_turisticos02);
 
-🚩 **Objetivo:** Criar um programa em C que cadastra **duas** cartas com os seguintes atributos:
+    //Cálculo da Densidade Populacional da Carta 01 e da Carta 02:
 
-*   População (`int`)
-*   Área (`float`)
-*   PIB (`float`)
-*   Número de pontos turísticos (`int`)
+    densidadepopulacional01 = populacao01 / area01;
+    densidadepopulacional02 = populacao02 / area02;
 
-⚙️ **Funcionalidades do Sistema:**
+    // Cálculo do PIB per capita da Carta 01 e da Carta 02:
 
-*   O sistema permitirá ao usuário cadastrar os dados de **duas** cartas manualmente via terminal.
-*   Após o cadastro, o sistema exibirá os dados de cada cidade de forma organizada.
+    PIB_per_capita01 = pib01 / populacao01;
+    PIB_per_capita02 = pib02 / populacao02;
 
-📥 **Entrada** e 📤 **Saída de Dados:**
+    // Cálculo do Super Poder
+    inverso_densidade01 = area01 / populacao01;
+    inverso_densidade2 = area02 / populacao02;
 
-*   O usuário insere os dados de cada carta interativamente via `scanf`.
-*   O programa exibe os dados cadastrados usando `printf`, com cada atributo em uma nova linha.
+    superPoder01 = populacao01 + area01 + pib01 + pontos_turisticos01 + inverso_densidade01 + PIB_per_capita01;
+    superPoder02 = populacao02 + area02 + pib02 + pontos_turisticos02 + inverso_densidade2 + PIB_per_capita02;
+    
+    
+    //  Exibição dos dados fornecidos pelo usuário da Carta 01 e da Carta 02
 
-**Simplificações para o Nível Novato:**
+    printf("*** CARTA 01 (%s) ***\n", nome_cidade01);
+    printf("Estado: %c\n", estado01);
+    printf("Código: %s\n", codigo01);
+    printf("Cidade: %s\n", nome_cidade01);
+    printf("População: %ul habitantes \n", populacao01);
+    printf("Área: %.2f km²\n", area01);
+    printf("PIB: %.2f\n", pib01);
+    printf("Número de pontos turísticos: %d\n", pontos_turisticos01);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadepopulacional01);
+    printf("PIB per capita: %.2f bilhões de reais\n", PIB_per_capita01);
 
-*   Cadastre apenas **duas** cartas.
-*   Concentre-se na leitura, armazenamento e exibição. Não implemente comparações ou outros recursos.
-*   **Não use** laços (`for`, `while`) ou condicionais (`if`, `else`).
+    printf("*** CARTA 02 (%s) ***\n", nome_cidade02);
+    printf("Estado: %c\n", estado02);
+    printf("Código: %s\n", codigo02);
+    printf("Cidade: %s\n", nome_cidade02);
+    printf("População: %ul habitantes \n", populacao02);
+    printf("Área: %.2f km²\n", area02);
+    printf("PIB: %.2f bilhões de reais\n", pib02);
+    printf("Número de pontos turísticos: %d\n", pontos_turisticos02);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadepopulacional02);
+    printf("PIB per capita é: %.2f bilhões de reais\n", PIB_per_capita02);
 
+    // Comparação entre os atributos das Cartas 01 e 02
+    
+    printf("*** Comparações entre as Cartas 01 e 02 ***\n");
 
-## 🛡️ Nível Aventureiro: Cálculo de Atributos
+    printf("População: Carta 1 venceu (%d)\n", populacao01 > populacao02);
+    printf("Área: Carta 1 venceu (%d)\n", area01 > area02);
+    printf("PIB: Carta 1 venceu (%d)\n", pib01 > pib02);
+    printf("Pontos Turisticos: Carta 1 venceu (%d)\n", pontos_turisticos01 > pontos_turisticos02);
+    printf("Densidade Populacional: Carta 1 venceu (%d)\n", densidadepopulacional01 < densidadepopulacional02);
+    printf("PIB per Capita: Carta 1 venceu (%d)\n", PIB_per_capita01 > PIB_per_capita02);
+    printf("Super Poder: Carta 1 venceu (%d)\n", superPoder01 > superPoder02);
+    
+    return 0;
 
-No nível Aventureiro, você expandirá o sistema para incluir o cálculo de dois novos atributos: Densidade Populacional e PIB per Capita.
-
-🆕 **Diferença em relação ao Nível Novato:**
-
-*   **Novos Atributos:**
-    *   Densidade Populacional: População / Área (`float`)
-    *   PIB per Capita: PIB / População (`float`)
-
-⚙️ **Funcionalidades do Sistema:**
-
-*   O sistema calculará automaticamente a Densidade Populacional e o PIB per Capita.
-*   Os novos atributos serão exibidos junto com os demais.
-
-📥 **Entrada** e 📤 **Saída de Dados:**
-
-*   Mesma entrada do nível Novato.
-*   A saída exibirá também os atributos calculados.
-
-**Simplificações para o Nível Intermediário:**
-
-*   Continue cadastrando apenas **duas** cartas.
-*   Continue **sem usar** laços (`for`, `while`) ou condicionais (`if`, `else`).
-
-
-
-## 🏆 Nível Mestre: Comparação e Super Poder
-
-No nível Mestre, você implementará a comparação entre duas cartas e o cálculo do "Super Poder".
-
-🆕 **Diferença em relação ao Nível Aventureiro:**
-
-*   **Comparação de Cartas:** O usuário poderá comparar as duas cartas.
-*   **Super Poder:** Soma de todos os atributos (inclusive os calculados), com a densidade populacional *invertida* antes da soma (1/densidade).  Tipo: `float`.
-
-⚙️ **Funcionalidades do Sistema:**
-
-*   Comparação atributo a atributo, mostrando qual carta venceu (1 se a Carta 1 vence, 0 se a Carta 2 vence).
-*   Para Densidade Populacional, vence a carta com o *menor* valor.
-*   Para os demais atributos (e o Super Poder), vence a carta com o *maior* valor.
-
-📥 **Entrada** e 📤 **Saída de Dados:**
-
-*   Mesma entrada dos níveis anteriores, mas a População agora é `unsigned long int`.
-*   A saída mostrará o resultado da comparação para cada atributo e o Super Poder.
-
-**Observação:**  Preste atenção à conversão de tipos ao calcular o Super Poder!
-
-
-## 🏁 Conclusão
-
-Ao concluir qualquer um dos níveis, você terá dado um passo importante no desenvolvimento do Super Trunfo - Países. Boa sorte e divirta-se programando!
-
-Equipe de Ensino - MateCheck
-content_copy
+}
